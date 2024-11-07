@@ -1,431 +1,441 @@
 [
-    {
-        "email": "admin@admin.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lqwez.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Admin Account",
-        "type": "Savings",
-        "number": "47290539480",
-        "balance": 1000,
-        "isAdmin": true,
-        "transactions": [],
-        "ph_no": 8652345897,
-        "address": "123 Maple Street, Springfield, IL 62701",
-        "DOB": "1990-05-14"
-    },
-    {
-        "email": "jeff@gmail.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4asdah4yOJQG",
-        "fullname": "Jeffrey de Lara",
-        "type": "Savings",
-        "number": "47290539481",
-        "balance": 1029300.43,
-        "isAdmin": true,
-        "transactions": [],
-        "ph_no": 9954236652,
-        "address": "789 Oak Boulevard, Portland, OR 97205",
-        "DOB": "1993-03-30"
-    },
-    {
-        "email": "jeff2@gmail.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADxcvBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yadsaJQG",
-        "fullname": "Juan dela Cruz",
-        "type": "Savings",
-        "number": "47290539482",
-        "balance": 392830.22,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Fund transfer from Client Demo Account #47290539486",
-                "amount": 2000,
-                "type": "credit",
-                "date": "September 1, 2024"
-            },
-            {
-                "title": "Withdraw",
-                "amount": 10000,
-                "type": "debit",
-                "date": "September 1, 2024"
-            }
-        ],
-        "ph_no": 7545859635,
-        "address": "321 Pine Lane, Miami, FL 33101",
-        "DOB": "1988-06-18"
-    },
-    {
-        "email": "user24@gmail.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADxcvBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Peter de Castro",
-        "type": "Savings",
-        "number": "47290539483",
-        "balance": 102938.34,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 5000,
-                "type": "credit",
-                "date": "September 5, 2024"
-            },
-            {
-                "title": "Fund transfer to Noli Enriquez #47290539484",
-                "amount": 15000,
-                "type": "debit",
-                "date": "September 10, 2024"
-            }
-        ],
-        "ph_no": 8685930121,
-        "address": "159 Spruce Circle, Boston, MA 02108",
-        "DOB": "2000-01-25"
-    },
-    {
-        "email": "user34@gmail.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Noli Enriquez",
-        "type": "Current",
-        "number": "47290539484",
-        "balance": 837495.38,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 20000,
-                "type": "credit",
-                "date": "September 7, 2024"
-            },
-            {
-                "title": "Withdraw",
-                "amount": 5000,
-                "type": "debit",
-                "date": "September 12, 2024"
-            },
-            {
-                "title": "Fund transfer from Peter de Castro #47290539483",
-                "amount": 15000,
-                "type": "credit",
-                "date": "September 10, 2024"
-            }
-        ],
-        "ph_no": 7256428381,
-        "address": "987 Birch Road, Atlanta, GA 30301",
-        "DOB": "2002-07-26"
-    },
-    {
-        "email": "derek@gmail.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Karen Davila",
-        "type": "Current",
-        "number": "47290539485",
-        "balance": 574839.58,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Withdraw",
-                "amount": 3000,
-                "type": "debit",
-                "date": "September 3, 2024"
-            },
-            {
-                "title": "Deposit",
-                "amount": 10000,
-                "type": "credit",
-                "date": "September 4, 2024"
-            },
-            {
-                "title": "Fund transfer to Client Demo Account #47290539486",
-                "amount": 5000,
-                "type": "debit",
-                "date": "September 5, 2024"
-            }
-        ],
-        "ph_no": 6986985200,
-        "address": "654 Cedar Drive, Denver, CO 80203",
-        "DOB": "1996-04-29"
-    },
-    {
-        "email": "client@client.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Client Demo Account",
-        "type": "Savings",
-        "number": "47290539486",
-        "balance": 1000,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 3000,
-                "type": "credit",
-                "date": "September 2, 2024"
-            },
-            {
-                "title": "Fund transfer to Juan dela Cruz #47290539482",
-                "amount": 2000,
-                "type": "debit",
-                "date": "September 1, 2024"
-            },
-            {
-                "title": "Withdraw",
-                "amount": 500,
-                "type": "debit",
-                "date": "September 3, 2024"
-            }
-        ],
-        "ph_no": 9562001305,
-        "address": "345 Sycamore Lane, San Diego, CA 92101",
-        "DOB": "2001-12-05"
-    },
-    {
-        "email": "sarah@gmail.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Sarah Johnson",
-        "type": "Current",
-        "number": "58392018475",
-        "balance": 450000.75,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 10000,
-                "type": "credit",
-                "date": "September 2, 2024"
-            },
-            {
-                "title": "Withdraw",
-                "amount": 7000,
-                "type": "debit",
-                "date": "September 5, 2024"
-            },
-            {
-                "title": "Fund transfer from Michael Smith #47280128564",
-                "amount": 5000,
-                "type": "credit",
-                "date": "September 7, 2024"
-            }
-        ],
-        "ph_no": "9567843210",
-        "address": "234 Pine Street, Seattle, WA 98101",
-        "DOB": "1988-07-22"
-    },
-    {
-        "email": "michael@yahoo.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Michael Smith",
-        "type": "Savings",
-        "number": "47280128564",
-        "balance": 120500,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 15000,
-                "type": "credit",
-                "date": "September 2, 2024"
-            },
-            {
-                "title": "Fund transfer to Sarah Johnson #58392018475",
-                "amount": 5000,
-                "type": "debit",
-                "date": "September 6, 2024"
-            }
-        ],
-        "ph_no": "9234567890",
-        "address": "567 Elm Avenue, Riverside, CA 92501",
-        "DOB": "2000-01-15"
-    },
-    {
-        "email": "linda@outlook.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Linda Garcia",
-        "type": "Investment",
-        "number": "58390027546",
-        "balance": 750000,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 25000,
-                "type": "credit",
-                "date": "September 5, 2024"
-            },
-            {
-                "title": "Withdraw",
-                "amount": 10000,
-                "type": "debit",
-                "date": "September 8, 2024"
-            }
-        ],
-        "ph_no": "9123456789",
-        "address": "890 Maple Lane, Miami, FL 33101",
-        "DOB": "1995-04-10"
-    },
-    {
-        "email": "kevin@gmail.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Kevin Brown",
-        "type": "Savings",
-        "number": "47290539482",
-        "balance": 200000,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 5000,
-                "type": "credit",
-                "date": "September 3, 2024"
-            },
-            {
-                "title": "Fund transfer to Emily Davis #58392018476",
-                "amount": 10000,
-                "type": "debit",
-                "date": "September 6, 2024"
-            }
-        ],
-        "ph_no": "9787654321",
-        "address": "345 Cedar Drive, Denver, CO 80203",
-        "DOB": "2003-11-05"
-    },
-    {
-        "email": "emily@yahoo.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "Emily Davis",
-        "type": "Current",
-        "number": "58390027547",
-        "balance": 350500.55,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 15000,
-                "type": "credit",
-                "date": "September 4, 2024"
-            },
-            {
-                "title": "Fund transfer from Kevin Brown #47290539482",
-                "amount": 10000,
-                "type": "credit",
-                "date": "September 6, 2024"
-            },
-            {
-                "title": "Withdraw",
-                "amount": 8000,
-                "type": "debit",
-                "date": "September 8, 2024"
-            }
-        ],
-        "ph_no": "9145678901",
-        "address": "678 Birch Road, Atlanta, GA 30301",
-        "DOB": "2006-06-22"
-    },
-    {
-        "email": "david@outlook.com",
-        "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
-        "fullname": "David Wilson",
-        "type": "Savings",
-        "number": "58392018476",
-        "balance": 50000,
-        "isAdmin": false,
-        "transactions": [],
-        "ph_no": "9612345678",
-        "address": "159 Spruce Circle, Boston, MA 02108",
-        "DOB": "2001-09-14"
-    },
-    {
-        "email": "testuser1@gmail.com",
-        "pin": "$$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG$101",
-        "fullname": "Test User",
-        "type": "Savings Account",  
-        "number": "12345678902",
-        "balance": 5000,
-        "isAdmin": false,
-        "transactions": []
-    },
-    {
-        "email": "testuser@gmail.com",
-        "pin": "$2b$10$Kfd3lAqG3N9O1g1hqzqshuPOwwqwctMeycOio3dhB.dtkBs6UhyAC",
-        "fullname": "Test User",
-        "type": "Savings Account",
-        "number": "12345678901",
-        "balance": 5000,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 10000,
-                "type": "credit",
-                "date": "September 1, 2024"
-            },
-            {
-                "title": "Withdraw",
-                "amount": 2000,
-                "type": "debit",
-                "date": "September 3, 2024"
-            },
-            {
-                "title": "Fund transfer to Linda Garcia #58390027546",
-                "amount": 5000,
-                "type": "debit",
-                "date": "September 4, 2024"
-            }
-        ]
-    },
-    {
-        "email": "ishaan@gmail.com",
-        "pin": "$2b$10$dJGygBDo4RPCzxeG1A0MJOEUKm1qHO9NvqPDrs1fjLQDoDMkrnrxq",
-        "fullname": "Ishaan Gakhar",
-        "type": "Savings Account",
-        "number": "22091130412",
-        "balance": 500000,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 10000,
-                "type": "credit",
-                "date": "October 1, 2024"
-            },
-            {
-                "title": "Withdraw",
-                "amount": 2000,
-                "type": "debit",
-                "date": "October 3, 2024"
-            },
-            {
-                "title": "Fund transfer to Linda Garcia #58390027546",
-                "amount": 5000,
-                "type": "debit",
-                "date": "October 4, 2024"
-            }
-        ]
-    },
-    {
-        "email": "promit@gmail.com",
-        "pin": "$2b$10$bCpVxcMvs7R68A7iAe/GbufMqSVUqN8gxEGYtcetWvOmHOJHunIgO",
-        "fullname": "Promit Biswas",
-        "type": "Savings Account",
-        "number": "98765432109",
-        "balance": 5000000,
-        "isAdmin": false,
-        "transactions": [
-            {
-                "title": "Deposit",
-                "amount": 10000,
-                "type": "credit",
-                "date": "October 1, 2024"
-            },
-            {
-                "title": "Withdraw",
-                "amount": 2000,
-                "type": "debit",
-                "date": "October 3, 2024"
-            },
-            {
-                "title": "Fund transfer to Linda Garcia #58390027546",
-                "amount": 5000,
-                "type": "debit",
-                "date": "October 4, 2024"
-            }
-        ],
-        "ph_no": 9954236652,
-        "address": "789 Oak Boulevard, Portland, OR 97205",
-        "DOB": "1993-03-30"
-    }
+  {
+    "email": "admin@admin.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lqwez.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Admin Account",
+    "type": "Savings",
+    "number": "47290539480",
+    "balance": 1000,
+    "isAdmin": true,
+    "transactions": [],
+    "ph_no": 8652345897,
+    "address": "123 Maple Street, Springfield, IL 62701",
+    "DOB": "1990-05-14"
+  },
+  {
+    "email": "jeff@gmail.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4asdah4yOJQG",
+    "fullname": "Jeffrey de Lara",
+    "type": "Savings",
+    "number": "47290539481",
+    "balance": 1029300.43,
+    "isAdmin": true,
+    "transactions": [],
+    "ph_no": 9954236652,
+    "address": "789 Oak Boulevard, Portland, OR 97205",
+    "DOB": "1993-03-30"
+  },
+  {
+    "email": "jeff2@gmail.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADxcvBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yadsaJQG",
+    "fullname": "Juan dela Cruz",
+    "type": "Savings",
+    "number": "47290539482",
+    "balance": 392830.22,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Fund transfer from Client Demo Account #47290539486",
+        "amount": 2000,
+        "type": "credit",
+        "date": "September 1, 2024"
+      },
+      {
+        "title": "Withdraw",
+        "amount": 10000,
+        "type": "debit",
+        "date": "September 1, 2024"
+      }
+    ],
+    "ph_no": 7545859635,
+    "address": "321 Pine Lane, Miami, FL 33101",
+    "DOB": "1988-06-18"
+  },
+  {
+    "email": "user24@gmail.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADxcvBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Peter de Castro",
+    "type": "Savings",
+    "number": "47290539483",
+    "balance": 102938.34,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 5000,
+        "type": "credit",
+        "date": "September 5, 2024"
+      },
+      {
+        "title": "Fund transfer to Noli Enriquez #47290539484",
+        "amount": 15000,
+        "type": "debit",
+        "date": "September 10, 2024"
+      }
+    ],
+    "ph_no": 8685930121,
+    "address": "159 Spruce Circle, Boston, MA 02108",
+    "DOB": "2000-01-25"
+  },
+  {
+    "email": "user34@gmail.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Noli Enriquez",
+    "type": "Current",
+    "number": "47290539484",
+    "balance": 837495.38,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 20000,
+        "type": "credit",
+        "date": "September 7, 2024"
+      },
+      {
+        "title": "Withdraw",
+        "amount": 5000,
+        "type": "debit",
+        "date": "September 12, 2024"
+      },
+      {
+        "title": "Fund transfer from Peter de Castro #47290539483",
+        "amount": 15000,
+        "type": "credit",
+        "date": "September 10, 2024"
+      }
+    ],
+    "ph_no": 7256428381,
+    "address": "987 Birch Road, Atlanta, GA 30301",
+    "DOB": "2002-07-26"
+  },
+  {
+    "email": "derek@gmail.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Karen Davila",
+    "type": "Current",
+    "number": "47290539485",
+    "balance": 574839.58,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Withdraw",
+        "amount": 3000,
+        "type": "debit",
+        "date": "September 3, 2024"
+      },
+      {
+        "title": "Deposit",
+        "amount": 10000,
+        "type": "credit",
+        "date": "September 4, 2024"
+      },
+      {
+        "title": "Fund transfer to Client Demo Account #47290539486",
+        "amount": 5000,
+        "type": "debit",
+        "date": "September 5, 2024"
+      }
+    ],
+    "ph_no": 6986985200,
+    "address": "654 Cedar Drive, Denver, CO 80203",
+    "DOB": "1996-04-29"
+  },
+  {
+    "email": "client@client.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Client Demo Account",
+    "type": "Savings",
+    "number": "47290539486",
+    "balance": 1000,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 3000,
+        "type": "credit",
+        "date": "September 2, 2024"
+      },
+      {
+        "title": "Fund transfer to Juan dela Cruz #47290539482",
+        "amount": 2000,
+        "type": "debit",
+        "date": "September 1, 2024"
+      },
+      {
+        "title": "Withdraw",
+        "amount": 500,
+        "type": "debit",
+        "date": "September 3, 2024"
+      }
+    ],
+    "ph_no": 9562001305,
+    "address": "345 Sycamore Lane, San Diego, CA 92101",
+    "DOB": "2001-12-05"
+  },
+  {
+    "email": "sarah@gmail.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Sarah Johnson",
+    "type": "Current",
+    "number": "58392018475",
+    "balance": 450000.75,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 10000,
+        "type": "credit",
+        "date": "September 2, 2024"
+      },
+      {
+        "title": "Withdraw",
+        "amount": 7000,
+        "type": "debit",
+        "date": "September 5, 2024"
+      },
+      {
+        "title": "Fund transfer from Michael Smith #47280128564",
+        "amount": 5000,
+        "type": "credit",
+        "date": "September 7, 2024"
+      }
+    ],
+    "ph_no": "9567843210",
+    "address": "234 Pine Street, Seattle, WA 98101",
+    "DOB": "1988-07-22"
+  },
+  {
+    "email": "michael@yahoo.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Michael Smith",
+    "type": "Savings",
+    "number": "47280128564",
+    "balance": 120500,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 15000,
+        "type": "credit",
+        "date": "September 2, 2024"
+      },
+      {
+        "title": "Fund transfer to Sarah Johnson #58392018475",
+        "amount": 5000,
+        "type": "debit",
+        "date": "September 6, 2024"
+      }
+    ],
+    "ph_no": "9234567890",
+    "address": "567 Elm Avenue, Riverside, CA 92501",
+    "DOB": "2000-01-15"
+  },
+  {
+    "email": "linda@outlook.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Linda Garcia",
+    "type": "Investment",
+    "number": "58390027546",
+    "balance": 750000,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 25000,
+        "type": "credit",
+        "date": "September 5, 2024"
+      },
+      {
+        "title": "Withdraw",
+        "amount": 10000,
+        "type": "debit",
+        "date": "September 8, 2024"
+      }
+    ],
+    "ph_no": "9123456789",
+    "address": "890 Maple Lane, Miami, FL 33101",
+    "DOB": "1995-04-10"
+  },
+  {
+    "email": "kevin@gmail.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Kevin Brown",
+    "type": "Savings",
+    "number": "47290539482",
+    "balance": 200000,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 5000,
+        "type": "credit",
+        "date": "September 3, 2024"
+      },
+      {
+        "title": "Fund transfer to Emily Davis #58392018476",
+        "amount": 10000,
+        "type": "debit",
+        "date": "September 6, 2024"
+      }
+    ],
+    "ph_no": "9787654321",
+    "address": "345 Cedar Drive, Denver, CO 80203",
+    "DOB": "2003-11-05"
+  },
+  {
+    "email": "emily@yahoo.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "Emily Davis",
+    "type": "Current",
+    "number": "58390027547",
+    "balance": 350500.55,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 15000,
+        "type": "credit",
+        "date": "September 4, 2024"
+      },
+      {
+        "title": "Fund transfer from Kevin Brown #47290539482",
+        "amount": 10000,
+        "type": "credit",
+        "date": "September 6, 2024"
+      },
+      {
+        "title": "Withdraw",
+        "amount": 8000,
+        "type": "debit",
+        "date": "September 8, 2024"
+      }
+    ],
+    "ph_no": "9145678901",
+    "address": "678 Birch Road, Atlanta, GA 30301",
+    "DOB": "2006-06-22"
+  },
+  {
+    "email": "david@outlook.com",
+    "pin": "$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG",
+    "fullname": "David Wilson",
+    "type": "Savings",
+    "number": "58392018476",
+    "balance": 50000,
+    "isAdmin": false,
+    "transactions": [],
+    "ph_no": "9612345678",
+    "address": "159 Spruce Circle, Boston, MA 02108",
+    "DOB": "2001-09-14"
+  },
+  {
+    "email": "testuser1@gmail.com",
+    "pin": "$$2b$10$WIbV6jWyFke2fHADBU4lz.U28vraCUocp/tkq0EUTjp4Q4h4yOJQG$101",
+    "fullname": "Test User",
+    "type": "Savings Account",
+    "number": "12345678902",
+    "balance": 5000,
+    "isAdmin": false,
+    "transactions": []
+  },
+  {
+    "email": "testuser@gmail.com",
+    "pin": "$2b$10$Kfd3lAqG3N9O1g1hqzqshuPOwwqwctMeycOio3dhB.dtkBs6UhyAC",
+    "fullname": "Test User",
+    "type": "Savings Account",
+    "number": "12345678901",
+    "balance": 5000,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 10000,
+        "type": "credit",
+        "date": "September 1, 2024"
+      },
+      {
+        "title": "Withdraw",
+        "amount": 2000,
+        "type": "debit",
+        "date": "September 3, 2024"
+      },
+      {
+        "title": "Fund transfer to Linda Garcia #58390027546",
+        "amount": 5000,
+        "type": "debit",
+        "date": "September 4, 2024"
+      }
+    ]
+  },
+  {
+    "email": "ishaan@gmail.com",
+    "pin": "$2b$10$dJGygBDo4RPCzxeG1A0MJOEUKm1qHO9NvqPDrs1fjLQDoDMkrnrxq",
+    "fullname": "Ishaan Gakhar",
+    "type": "Savings Account",
+    "number": "22091130412",
+    "balance": 500000,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 10000,
+        "type": "credit",
+        "date": "October 1, 2024"
+      },
+      {
+        "title": "Withdraw",
+        "amount": 2000,
+        "type": "debit",
+        "date": "October 3, 2024"
+      },
+      {
+        "title": "Fund transfer to Linda Garcia #58390027546",
+        "amount": 5000,
+        "type": "debit",
+        "date": "October 4, 2024"
+      }
+    ]
+  },
+  {
+    "email": "promit@gmail.com",
+    "pin": "$2b$10$bCpVxcMvs7R68A7iAe/GbufMqSVUqN8gxEGYtcetWvOmHOJHunIgO",
+    "fullname": "Promit Biswas",
+    "type": "Savings Account",
+    "number": "98765432109",
+    "balance": 5000000,
+    "isAdmin": false,
+    "transactions": [
+      {
+        "title": "Deposit",
+        "amount": 10000,
+        "type": "credit",
+        "date": "October 1, 2024"
+      },
+      {
+        "title": "Withdraw",
+        "amount": 2000,
+        "type": "debit",
+        "date": "October 3, 2024"
+      },
+      {
+        "title": "Fund transfer to Linda Garcia #58390027546",
+        "amount": 5000,
+        "type": "debit",
+        "date": "October 4, 2024"
+      }
+    ],
+    "ph_no": 9954236652,
+    "address": "789 Oak Boulevard, Portland, OR 97205",
+    "DOB": "1993-03-30"
+  },
+  {
+    "email": "harsh@gmail.com",
+    "pin": "$2b$10$vCR3moN3lTDr0AvmXGnx5uh3hY7c9RVM71OGL0Is6dOHPTd5u4UO2",
+    "fullname": "harsh",
+    "type": "Checking Account",
+    "number": "8807874076",
+    "balance": 11101,
+    "isAdmin": false,
+    "transactions": []
+  }
 ]

@@ -1,76 +1,68 @@
 import { useState } from "react";
 import { Notif } from "./Notif";
-import {formatNumber, trim} from './Utils';
+import { formatNumber, trim } from './Utils';
 
 export const CreateAccountPage = (props) => {
     const createRandomAccount = () => {
         return Math.floor(1000000000 + Math.random() * 9000000000);
     }
-    
-    const [notif, setNotif] = useState({message: 'Create a new client account.', style: 'left'});
+
+    const [notif, setNotif] = useState({ message: 'Create a new client account.', style: 'left' });
     const [initialBalance, setInitialBalance] = useState(0);
     const [initialAccountNumber, setInitialAccountNumber] = useState(createRandomAccount());
 
-    const createNewAccount = (user) => {
+    const createNewAccount = async (user) => {
+        try {
+            const response = await fetch('http://localhost:5000/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user)
+            });
 
-        const emptyInputs = Object.values(user).filter(input => {
-            return input === ''
-        });
-
-        const localUsers = props.users;
-
-        let alreadyExists = false;
-        localUsers.forEach(row => {
-            if(row.email === user.email) {
-                alreadyExists = true;
+            if (response.status === 201) {
+                setNotif({ message: 'Successfully saved.', style: 'success' });
+                return true;
+            } else if (response.status === 400) {
+                setNotif({ message: 'This email already exists. Try again.', style: 'danger' });
+                return false;
+            } else {
+                setNotif({ message: 'Error creating account. Please try again.', style: 'danger' });
+                return false;
             }
-        });
-
-        if(alreadyExists) {
-            setNotif({message: 'This email already exists. Try again.', style: 'danger'});
+        } catch (error) {
+            setNotif({ message: 'Server error. Please try again later.', style: 'danger' });
             return false;
-        } else if(emptyInputs.length > 0) {
-            setNotif({message: 'All fields are required.', style: 'danger'});
-            return false;
-        } else {
-            setNotif('');
-            localUsers.unshift(user);
-            props.setUsers(localUsers); 
-            localStorage.setItem('users', JSON.stringify(localUsers));
-            setNotif({message: 'Successfully saved.', style: 'success'});
-            return true;
         }
-    }
+    };
 
-    const handleCreateAccount = (event) => {
+    const handleCreateAccount = async (event) => {
         event.preventDefault();
         const user = event.target.elements;
 
         const account = {
             email: user.email.value,
-            password: user.password.value,
+            pin: user.password.value,  // Changed to "pin" to match server-side code
             fullname: user.fullname.value,
             type: user.accountType.value,
             number: user.accountNumber.value,
-            isAdmin: false,
-            balance: trim(user.initialBalance.value), 
+            balance: trim(user.initialBalance.value),
             transactions: []
-        }
+        };
 
-        const isSaved = createNewAccount(account);
-        if(isSaved) {
+        const isSaved = await createNewAccount(account);
+        if (isSaved) {
             user.email.value = '';
             user.password.value = '';
-            user.fullname.value = ''; 
+            user.fullname.value = '';
             user.accountNumber.value = setInitialAccountNumber(createRandomAccount());
             user.initialBalance.value = setInitialBalance(0);
         }
-    }
+    };
 
     const onInitialBalance = event => {
         const amount = trim(event.target.value) || 0;
         setInitialBalance(amount);
-    }
+    };
 
     return (
         <section id="main-content">
@@ -89,7 +81,7 @@ export const CreateAccountPage = (props) => {
                 <label htmlFor="account-type">Account Type</label>
                 <select name="accountType">
                     <option value="Checking Account">Checking Account</option>
-                    <option value="Savings Accounts">Savings Account</option>
+                    <option value="Savings Account">Savings Account</option>
                 </select>
                 <hr />
                 <label htmlFor="email">Email Address</label>
@@ -99,5 +91,5 @@ export const CreateAccountPage = (props) => {
                 <input value="Create Account" className="btn" type="submit" />
             </form>
         </section>
-    )
-}
+    );
+};

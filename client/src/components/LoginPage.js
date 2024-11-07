@@ -13,6 +13,7 @@ export const LoginPage = (props) => {
 
   const onChangeNumber = (event) => {
     setNumber(event.target.value);
+    console.log(process.env.REACT_APP_PRIVATE_KEY)
   }
 
   const onChangePin = (event) => {
@@ -32,6 +33,7 @@ export const LoginPage = (props) => {
           <button type="submit" className="btn">Login</button>
         </form>
       </div>
+
     </div>
   )
 }
