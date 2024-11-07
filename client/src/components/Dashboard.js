@@ -178,7 +178,7 @@ import { TransferPage } from "./TransferPage";
 import { TransactPage } from "./TransactPage";
 
 export const Dashboard = (props) => {
-    const [page, setPage] = useState('home');
+    const [page, setPage] = useState('create-account');
     const [users, setUsers] = useState(props.users);  // Initialize state with prop users
     const [notif, setNotif] = useState({ message: '', style: '' });
     const [editingUser, setEditingUser] = useState(null);

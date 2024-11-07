@@ -99,7 +99,7 @@ export const Authenticate = () => {
     };
 
     if (isLoggedIn) {
-      fetchUsers(); // Only fetch if admin is logged in
+      fetchUsers(); // Only fetch if logged in
     }
   }, [isLoggedIn]);
 
@@ -117,6 +117,7 @@ export const Authenticate = () => {
         setClient(data.user);
         setIsLoggedIn(true);
         setNotif({ message: data.message, style: 'success' });
+        console.log('setting current user:', data.user)
         localStorage.setItem('currentUser', JSON.stringify(data.user));
       } else {
         const errorData = await response.json();
