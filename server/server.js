@@ -4,9 +4,21 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-
+const rateLimit = require('express-rate-limit');
 dotenv.config();
 const app = express();
+
+let count = 0;
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, 
+    max: 100,
+    message: 'Too Many Requests',
+    headers: true,
+});
+
+app.use(limiter);
+
 app.use(cors());
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json());
@@ -105,12 +117,13 @@ app.get('/all', async (req, res) => {
     }
 });
 app.get('/', async (req, res) => {
-    console.log(req)
+    count++
+    const ip = req.headers['x-real-ip'] || req.connection.remoteAddress
+    console.log(`${count} : Request from IP Address: ${ip}`)
     res.status(200).json({
         message: 'hello'
     });
 });
-
 
 
 
