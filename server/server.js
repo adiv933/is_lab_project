@@ -56,7 +56,8 @@ app.post('/register', async (req, res) => {
             type,
             number,
             balance,
-            isAdmin: true,
+            isAdmin: false,
+            publicKey: process.env.PUBLIC_KEY,
             transactions: [],
         });
 
@@ -92,29 +93,16 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// Get User endpoint
-app.get('/user', async (req, res) => {
-    const { email } = req.query;
-
+// Get all Users 
+app.get('/all', async (req, res) => {
     try {
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        const userDetails = {
-            fullname: user.fullname,
-            type: user.type,
-            number: user.number,
-            balance: user.balance,
-            transactions: user.transactions,
-        };
-
-        res.status(200).json(userDetails);
+        const users = await User.find({}, '-pin'); // Exclude the PIN for security
+        res.status(200).json({ message: 'Users fetched successfully', users });
     } catch (error) {
-        res.status(500).json({ message: 'Error retrieving user', error: error.message });
+        res.status(500).json({ message: 'Error fetching users', error: error.message });
     }
 });
+
 
 // Start server
 app.listen(PORT, () => {

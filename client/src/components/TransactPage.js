@@ -7,19 +7,19 @@ export const TransactPage = (props) => {
     const setNotif = props.setNotif;
     const notif = props.notif;
     const [accounts, setAccounts] = useState(users);
-    const [selectedAccount, setSelectedAccount] = useState({balance: 0});
+    const [selectedAccount, setSelectedAccount] = useState({ balance: 0 });
     const [depositAmount, setDepositAmount] = useState(0);
 
-    const options = accounts.map(user => {
-        return <option value={user.number}>{user.fullname} #{user.number}</option>
+    const options = accounts.map((user, index) => {
+        return <option key={index} value={user.number}>{user.fullname} #{user.number}</option>
     });
 
     const displayBalance = (e) => {
         setNotif(notif);
         const selectedNumber = e.target.value;
-        
-        for(const user of accounts) {
-            if(user.number === selectedNumber) {
+
+        for (const user of accounts) {
+            if (user.number === selectedNumber) {
                 setSelectedAccount(user);
                 break;
             }
@@ -36,20 +36,20 @@ export const TransactPage = (props) => {
         const amount = trim(e.target.elements.amount.value);
         const accountNumber = e.target.elements.account.value;
 
-        if(amount > 0 && accountNumber !== "0") {
-            for(const user of accounts) {
-                if(user.number === accountNumber) {
+        if (amount > 0 && accountNumber !== "0") {
+            for (const user of accounts) {
+                if (user.number === accountNumber) {
                     transact(user.number, amount, props.type, props.setUsers);
                     setSelectedAccount(findAccount(user.number));
                     setAccounts(JSON.parse(localStorage.getItem('users')));
                     setDepositAmount(0);
-                    setNotif({message: `${capitalize(props.page)} successful.`, style: 'success'});
+                    setNotif({ message: `${capitalize(props.page)} successful.`, style: 'success' });
                     break;
                 }
             }
-        } 
+        }
         else {
-            setNotif({message: `${capitalize(props.page)} failed.`, style: 'danger'});
+            setNotif({ message: `${capitalize(props.page)} failed.`, style: 'danger' });
         }
     }
     // 'bx bx-up-arrow-alt'
@@ -68,7 +68,7 @@ export const TransactPage = (props) => {
 
                 <label>Current balance</label>
                 <input type="text" className="right" value={formatNumber(selectedAccount.balance)} disabled />
-                
+
                 <div className="transfer-icon"><i className={icon}></i></div>
                 <label>Amount to {props.page}</label>
                 <input type="text" name="amount" value={depositAmount} onChange={onDeposit} autoComplete="off" className="right big-input" />
