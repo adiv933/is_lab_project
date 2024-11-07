@@ -28,6 +28,7 @@ export const LoginPage = (props) => {
           <label htmlFor="number">Account Number</label>
           <input
             id="number"
+            name="number"
             autoComplete="off"
             onChange={onChangeNumber}
             value={number}
@@ -38,6 +39,7 @@ export const LoginPage = (props) => {
           <label htmlFor="pin">PIN</label>
           <input
             id="pin"
+            name="pin"
             autoComplete="off"
             onChange={onChangePin}
             value={pin}

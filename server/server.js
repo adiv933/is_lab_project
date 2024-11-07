@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 dotenv.config();
 const app = express();
 app.use(cors());
+app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
 const MONGO_URI = process.env.MONGO_URI;
@@ -70,6 +71,7 @@ app.post('/register', async (req, res) => {
 
 // Login endpoint
 app.post('/login', async (req, res) => {
+    console.log(`req made using ${req.body.number} and ${req.body.pin}`)
     const { number, pin } = req.body;
 
     try {
@@ -102,6 +104,14 @@ app.get('/all', async (req, res) => {
         res.status(500).json({ message: 'Error fetching users', error: error.message });
     }
 });
+app.get('/', async (req, res) => {
+
+    res.status(200).json({
+        message: 'hello'
+    });
+});
+
+
 
 
 // Start server
