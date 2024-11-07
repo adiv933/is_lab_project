@@ -13,7 +13,7 @@ export const ClientDashboard = (props) => {
   
     const changePageHandler = (pageName) => {
       setPage(pageName);
-      const currentUser = findAccount(client.number);
+      const currentUser = localStorage.getItem('currentUser');
       setClient(currentUser);
     }
   
