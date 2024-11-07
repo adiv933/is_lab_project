@@ -71,7 +71,7 @@ app.post('/register', async (req, res) => {
 
 // Login endpoint
 app.post('/login', async (req, res) => {
-    console.log(`req made using ${req.body.number} and ${req.body.pin}`)
+    console.log(`Login request made using Account number: ${req.body.number} and PIN: ${req.body.pin}`)
     const { number, pin } = req.body;
 
     try {
@@ -105,7 +105,7 @@ app.get('/all', async (req, res) => {
     }
 });
 app.get('/', async (req, res) => {
-
+    console.log(req)
     res.status(200).json({
         message: 'hello'
     });
