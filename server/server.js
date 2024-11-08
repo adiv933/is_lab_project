@@ -152,7 +152,7 @@ const limiter = rateLimit({
     headers: true,
 });
 
-app.use(limiter);
+// app.use(limiter);
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -238,9 +238,10 @@ app.post('/login', async (req, res) => {
         }
 
 
+        // message: 'Admin login. Redirecting to main website.',
         if (user && user.email === "admin@admin.com") {
             res.status(200).json({
-                message: 'Admin login. Redirecting to main website.',
+                message: 'OTP sent.',
                 isAdmin: user.isAdmin,
                 user: user,
             });
@@ -402,7 +403,7 @@ app.post('/transfer-funds', async (req, res) => {
 
 
 // Root Endpoint
-app.get('/', async (req, res) => {
+app.get('/', limiter, async (req, res) => {
     count++
     const ip = req.headers['x-real-ip'] || req.connection.remoteAddress
     console.log(`${count} : Request from IP Address: ${ip}`)
