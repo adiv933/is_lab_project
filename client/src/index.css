@@ -11,3 +11,64 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#otp-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--first-color);
+  color: var(--text-color);
+}
+
+#otp-page form {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  color: var(--text-color);
+}
+
+#otp-page label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+#otp-page input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: border-color 0.3s;
+  color: var(--text-color);
+  background-color: var(--first-color);
+}
+
+#otp-page input[type="text"]:focus {
+  border-color: var(--secondary-color);
+}
+
+#otp-page .btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#otp-page .btn:hover {
+  background-color: rgba(219, 204, 163, 0.9);
+  /* Slightly lighter shade */
+}

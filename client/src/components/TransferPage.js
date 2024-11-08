@@ -349,169 +349,259 @@
 // }
 
 
+// import { useState, useEffect } from "react";
+// import { Notif } from "./Notif";
+// import { formatNumber, getDateToday } from "./Utils";
+
+// export const TransferPage = ({ isClient, client, users, setUsers }) => {
+//     const [allUsers, setAllUsers] = useState(users || []); // Default to an empty array if undefined
+//     const [receivers, setReceivers] = useState(users || []); // Default to an empty array if undefined
+//     const [sender, setSender] = useState(isClient ? client : { balance: 0 });
+//     const [receiver, setReceiver] = useState({ balance: 0 });
+//     const [notif, setNotif] = useState({ message: 'Transfer money from one account to another.', style: 'left' });
+//     const [transferAmount, setTransferAmount] = useState(0);
+
+//     useEffect(() => {
+//         if (users) {
+//             setAllUsers(users);
+//             setReceivers(users);
+//         }
+//     }, [users]);
+
+//     const senderSelected = (event) => {
+//         const accountNumber = event.target.value;
+
+//         let sender = null;
+
+//         users.forEach(user => {
+//             if (user.number === accountNumber) {
+//                 sender = user;
+//             }
+//         });
+
+//         const newUsers = users.filter((user) => user.number !== accountNumber);
+
+//         setSender(sender);
+//         setReceivers(newUsers);
+//         setReceiver({ balance: 0 });
+//     };
+
+//     const receiverSelected = event => {
+//         const accountNumber = event.target.value;
+
+//         let receiver = null;
+
+//         users.forEach(user => {
+//             if (user.number === accountNumber) {
+//                 receiver = user;
+//             }
+//         });
+
+//         setReceiver(receiver);
+//     };
+
+//     let senders = null;
+//     if (!isClient) {
+//         senders = users.map(user => {
+//             return (
+//                 <option value={user.number} key={user.number}>{user.fullname} #{user.number}</option>
+//             );
+//         });
+//     }
+
+//     const newReceivers = receivers && Array.isArray(receivers) ? receivers.map(receiver => {
+//         if (sender.number !== receiver.number) {
+//             return (
+//                 <option value={receiver.number} key={receiver.number}>{receiver.fullname} #{receiver.number}</option>
+//             );
+//         }
+//     }) : [];
+
+//     const transferFund = event => {
+//         event.preventDefault();
+//         const amount = parseFloat(event.target.elements.amount.value.replace(/,/g, ''));
+//         if (amount <= 0) return false;
+
+//         if (sender.number !== 0 && receiver.number !== 0 && receiver.number) {
+//             let senderSuccess = false;
+//             users.forEach(user => {
+//                 if (user.number === sender.number) {
+//                     if (user.balance - amount >= 0) {
+//                         user.balance -= amount;
+
+//                         user.transactions.unshift({
+//                             title: `Fund transfer to ${receiver.fullname} #${receiver.number}`,
+//                             amount: amount,
+//                             type: "debit",
+//                             date: getDateToday()
+//                         });
+
+//                         setSender(user);
+//                         senderSuccess = true;
+//                     }
+//                 }
+//             });
+
+//             if (senderSuccess) {
+//                 users.forEach(user => {
+//                     if (user.number === receiver.number) {
+//                         user.balance += amount;
+
+//                         user.transactions.unshift({
+//                             title: `Fund transfer from ${sender.fullname} #${receiver.number}`,
+//                             amount: amount,
+//                             type: "credit",
+//                             date: getDateToday()
+//                         });
+
+//                         setReceiver(user);
+//                     }
+//                 });
+
+//                 setNotif({ message: 'Successful transfer.', style: 'success' });
+//                 setAllUsers(users);
+//                 setUsers(users); // Sync updated users with the parent
+//                 localStorage.setItem('users', JSON.stringify(users));
+//                 setTransferAmount(0);
+//             } else {
+//                 setNotif({ message: 'Transfer failed.', style: 'danger' });
+//             }
+//         } else {
+//             setNotif({ message: 'Incomplete information. Missing sender or receiver.', style: 'danger' });
+//         }
+//     };
+
+//     const onTransfer = (e) => {
+//         const transfer = parseFloat(e.target.value.replace(/,/g, '')) || 0;
+//         setTransferAmount(transfer);
+//     };
+
+//     let senderField =
+//         <select onChange={senderSelected} name="sender">
+//             <option>Select Sender</option>
+//             {senders}
+//         </select>;
+
+//     if (isClient) {
+//         senderField = <input type="text" name="sender" value={`${client.fullname} #${client.number}`} disabled />;
+//     }
+
+//     return (
+//         <section id="main-content">
+//             <form id="form" onSubmit={transferFund}>
+//                 <h1>Fund Transfer</h1>
+//                 <Notif message={notif.message} style={notif.style} />
+//                 <h2>Sender</h2>
+//                 <label>From (Sender)</label>
+//                 {senderField}
+
+//                 <label>Current balance</label>
+//                 <input type="text" className="right" value={formatNumber(sender.balance)} disabled />
+
+//                 <label>Amount to Transfer</label>
+//                 <input type="text" name="amount" value={formatNumber(transferAmount)} onChange={onTransfer} autoComplete="off" className="right big-input" />
+
+//                 <div className="transfer-icon"><i className='bx bx-down-arrow-alt'></i></div>
+//                 <h2>Receiver</h2>
+//                 <label>To (Receiver)</label>
+//                 <select value={0} onChange={receiverSelected} name="receiver">
+//                     <option>Select Receiver</option>
+//                     {newReceivers}
+//                 </select>
+//                 <label>Current balance</label>
+//                 <input type="text" className="right" value={formatNumber(receiver.balance)} disabled />
+//                 <input type="submit" className="btn" value="Transfer Fund" />
+//             </form>
+//         </section>
+//     );
+// };
+
+
 import { useState, useEffect } from "react";
 import { Notif } from "./Notif";
-import { formatNumber, getDateToday } from "./Utils";
+import { formatNumber } from "./Utils";
 
-export const TransferPage = (props) => {
-    const { isClient, client, setClient } = props;
-    const [users, setUsers] = useState(props.users || []); // Default to an empty array if undefined
-    const [receivers, setReceivers] = useState(props.users || []); // Default to an empty array if undefined
-    const [sender, setSender] = useState(isClient ? client : { balance: 0 });
-    const [receiver, setReceiver] = useState({ balance: 0 });
-    const [notif, setNotif] = useState({ message: 'Transfer money from one account to another.', style: 'left' });
-    const [transferAmount, setTransferAmount] = useState(0);
 
-    useEffect(() => {
-        if (props.users) {
-            setUsers(props.users);
-            setReceivers(props.users);
-        }
-    }, [props.users]);
+export const TransferPage = ({ client, users, setUsers }) => {
+    const [sender, setSender] = useState(client || { balance: 0 });
+    const [receiver, setReceiver] = useState(null);
+    const [transferAmount, setTransferAmount] = useState("");
+    const [notif, setNotif] = useState({ message: 'Transfer funds between accounts.', style: 'left' });
 
-    const senderSelected = (event) => {
-        const accountNumber = event.target.value;
-
-        let sender = null;
-
-        users.forEach(user => {
-            if (user.number === accountNumber) {
-                sender = user;
-            }
-        });
-
-        const newUsers = users.filter((user) => user.number !== accountNumber);
-
-        setSender(sender);
-        setReceivers(newUsers);
-        setReceiver({ number: 0, balance: 0 });
+    const handleReceiverSelect = (event) => {
+        const selectedReceiver = users.find(user => user.number === parseInt(event.target.value));
+        console.log('selectedReceiver', selectedReceiver)
+        setReceiver(selectedReceiver || null);
     };
 
-    const receiverSelected = event => {
-        const accountNumber = event.target.value;
-
-        let receiver = null;
-
-        users.forEach(user => {
-            if (user.number === accountNumber) {
-                receiver = user;
-            }
-        });
-
-        setReceiver(receiver);
+    const handleTransferAmountChange = (event) => {
+        setTransferAmount(event.target.value);
     };
 
-    let senders = null;
-    if (!isClient) {
-        senders = users.map(user => {
-            return (
-                <option value={user.number} key={user.number}>{user.fullname} #{user.number}</option>
-            );
-        });
-    }
-
-    const newReceivers = receivers && Array.isArray(receivers) ? receivers.map(receiver => {
-        if (sender.number !== receiver.number) {
-            return (
-                <option value={receiver.number} key={receiver.number}>{receiver.fullname} #{receiver.number}</option>
-            );
-        }
-    }) : [];
-
-    const transferFund = event => {
+    const handleTransfer = async (event) => {
         event.preventDefault();
-        const amount = parseFloat(event.target.elements.amount.value.replace(/,/g, ''));
-        if (amount <= 0) return false;
+        const amount = parseFloat(transferAmount.replace(/,/g, ''));
 
-        if (sender.number !== 0 && receiver.number !== 0 && receiver.number) {
-            let senderSuccess = false;
-            users.forEach(user => {
-                if (user.number === sender.number) {
-                    if (user.balance - amount >= 0) {
-                        user.balance -= amount;
+        if (!receiver || amount <= 0) {
+            setNotif({ message: 'Invalid details. Select a receiver and enter a positive amount.', style: 'danger' });
+            return;
+        }
 
-                        user.transactions.unshift({
-                            title: `Fund transfer to ${receiver.fullname} #${receiver.number}`,
-                            amount: amount,
-                            type: "debit",
-                            date: getDateToday()
-                        });
-
-                        setSender(user);
-                        senderSuccess = true;
-                    }
-                }
+        try {
+            const response = await fetch('http://localhost:5000/transfer-funds', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    senderNumber: sender.number,
+                    receiverNumber: receiver.number,  // Access receiver number directly
+                    amount,
+                }),
             });
+            const result = await response.json();
 
-            if (senderSuccess) {
-                users.forEach(user => {
-                    if (user.number === receiver.number) {
-                        user.balance += amount;
-
-                        user.transactions.unshift({
-                            title: `Fund transfer from ${sender.fullname} #${receiver.number}`,
-                            amount: amount,
-                            type: "credit",
-                            date: getDateToday()
-                        });
-
-                        setReceiver(user);
-                    }
-                });
-
-                setNotif({ message: 'Successful transfer.', style: 'success' });
-                setUsers(users);
-                props.setUsers(users); // Sync updated users with the parent
-                localStorage.setItem('users', JSON.stringify(users));
-                setTransferAmount(0);
+            if (response.ok) {
+                setNotif({ message: 'Transfer successful.', style: 'success' });
+                setSender(result.sender);
+                setReceiver(result.receiver);
+                setUsers(users.map(user =>
+                    user.number === sender.number ? result.sender :
+                        user.number === receiver.number ? result.receiver : user
+                ));
+                setTransferAmount("");
             } else {
-                setNotif({ message: 'Transfer failed.', style: 'danger' });
+                setNotif({ message: result.message, style: 'danger' });
             }
-        } else {
-            setNotif({ message: 'Incomplete information. Missing sender or receiver.', style: 'danger' });
+        } catch (error) {
+            setNotif({ message: 'Transfer failed. Please try again.', style: 'danger' });
         }
     };
-
-    const onTransfer = (e) => {
-        const transfer = parseFloat(e.target.value.replace(/,/g, '')) || 0;
-        setTransferAmount(transfer);
-    };
-
-    let senderField =
-        <select onChange={senderSelected} name="sender">
-            <option>Select Sender</option>
-            {senders}
-        </select>;
-
-    if (isClient) {
-        senderField = <input type="text" name="sender" value={`${client.fullname} #${client.number}`} disabled />;
-    }
 
     return (
         <section id="main-content">
-            <form id="form" onSubmit={transferFund}>
+            <form id="form" onSubmit={handleTransfer}>
                 <h1>Fund Transfer</h1>
                 <Notif message={notif.message} style={notif.style} />
+
                 <h2>Sender</h2>
                 <label>From (Sender)</label>
-                {senderField}
+                <input type="text" name="sender" value={`${sender.fullname} #${sender.number}`} disabled />
 
-                <label>Current balance</label>
-                <input type="text" className="right" value={formatNumber(sender.balance)} disabled />
+                <label>Current Balance</label>
+                <input type="text" value={formatNumber(sender.balance)} disabled />
 
                 <label>Amount to Transfer</label>
-                <input type="text" name="amount" value={formatNumber(transferAmount)} onChange={onTransfer} autoComplete="off" className="right big-input" />
+                <input type="text" value={transferAmount} onChange={handleTransferAmountChange} autoComplete="off" />
 
-                <div className="transfer-icon"><i className='bx bx-down-arrow-alt'></i></div>
                 <h2>Receiver</h2>
                 <label>To (Receiver)</label>
-                <select value={receiver.number || 0} onChange={receiverSelected} name="receiver">
-                    <option>Select Receiver</option>
-                    {newReceivers}
+                <select onChange={handleReceiverSelect} value={receiver ? receiver.number : ""}>
+                    <option value="">Select Receiver</option>
+                    {users.filter(user => user.number !== sender.number).map(user => (
+                        <option key={user.number} value={user.number}>{user.fullname} #{user.number}</option>
+                    ))}
                 </select>
-                <label>Current balance</label>
-                <input type="text" className="right" value={formatNumber(receiver.balance)} disabled />
-                <input type="submit" className="btn" value="Transfer Fund" />
+
+                <input type="submit" value="Transfer Funds" />
             </form>
         </section>
     );

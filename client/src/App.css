@@ -1,23 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
+
 :root {
-    --first-color: rgb(246, 244, 237);
-    --secondary-color: rgb(219, 204, 163);
-    --text-color: rgb(59, 49, 40);
-    --secondary-text-color: rgb(110, 97, 81);
-    --shadow: 0px 1px 2px rgba(170, 170, 170, .4);
-    --font-family: 'Inter', sans-serif;
+  --first-color: rgb(246, 244, 237);
+  --secondary-color: rgb(219, 204, 163);
+  --text-color: rgb(59, 49, 40);
+  --secondary-text-color: rgb(110, 97, 81);
+  --shadow: 0px 1px 2px rgba(170, 170, 170, .4);
+  --font-family: 'Inter', sans-serif;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-family);
-    color: var(--text-color);
-    background-color: var(--first-color);
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--first-color);
 }
 
 hr {
@@ -27,12 +28,14 @@ hr {
 }
 
 main {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 300px auto;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 300px auto;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: .3rem 0;
 }
 
@@ -46,9 +49,17 @@ h1, h2, h3 {
 
 /* Animation */
 @keyframes fadein {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 /* /Animation */
 
 #form h1 {
@@ -59,30 +70,30 @@ h1, h2, h3 {
 }
 
 #logo {
-    color: var(--first-color);
-    margin-bottom: 1.5rem;
+  color: var(--first-color);
+  margin-bottom: 1.5rem;
 }
 
 #side-menu {
-    font-size: 1rem;
-    padding: 1.2rem;
-    background-color: var(--text-color);
+  font-size: 1rem;
+  padding: 1.2rem;
+  background-color: var(--text-color);
 }
 
 #side-menu ul {
-    list-style: none;
+  list-style: none;
 }
 
 #side-menu ul li {
-    /* border-bottom: 1px solid var(--secondary-text-color); */
-    padding: .8rem 0;
+  /* border-bottom: 1px solid var(--secondary-text-color); */
+  padding: .8rem 0;
 }
 
 #side-menu a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    display: block;
-    transition: .3s;
+  color: var(--secondary-color);
+  text-decoration: none;
+  display: block;
+  transition: .3s;
 }
 
 #side-menu a:hover {
@@ -94,22 +105,22 @@ h1, h2, h3 {
 }
 
 #main-content {
-    padding: 2rem;
-    overflow: auto;
-    animation: fadein .3s;
-    position: relative;
+  padding: 2rem;
+  overflow: auto;
+  animation: fadein .3s;
+  position: relative;
 }
 
 #main-content .account {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: .3rem;
-    margin-bottom: 1rem;
-    box-shadow: var(--shadow);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: .3rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
 }
 
 #main-content h3 {
@@ -118,43 +129,43 @@ h1, h2, h3 {
 }
 
 #main-content .balance {
-    font-weight: 800;
-    font-size: 2rem;
+  font-weight: 800;
+  font-size: 2rem;
 }
 
 #main-content .details {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 #actions {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 #actions button {
-    background-color: var(--first-color);
-    color: var(--secondary-text-color);
-    padding: .5rem;
-    font-size: 1.1rem;
-    border: 0;
-    cursor: pointer;
-    transition: .3s;
-    border-radius: 3px;
-    margin-right: .3rem;
+  background-color: var(--first-color);
+  color: var(--secondary-text-color);
+  padding: .5rem;
+  font-size: 1.1rem;
+  border: 0;
+  cursor: pointer;
+  transition: .3s;
+  border-radius: 3px;
+  margin-right: .3rem;
 }
 
 #actions button:hover {
-    background-color: rgba(219, 204, 163, .3);
-    color: var(--text-color);
+  background-color: rgba(219, 204, 163, .3);
+  color: var(--text-color);
 }
 
 #transactions {
-    padding: 2rem;
-    border-radius: 3px;
-    background-color: white;
-    box-shadow: var(--shadow);
-    
+  padding: 2rem;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: var(--shadow);
+
 }
 
 #transaction-div {
@@ -171,32 +182,34 @@ h1, h2, h3 {
 }
 
 #transactions table {
-    border-collapse: collapse;
-    table-layout: auto;
-    width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
 }
 
 #transactions th {
-    padding-bottom: 1rem;
-    font-weight: normal;
+  padding-bottom: 1rem;
+  font-weight: normal;
 }
 
-#transactions table th, td  {
-    border-bottom: 1px solid rgba(59, 49, 40, .2);
+#transactions table th,
+td {
+  border-bottom: 1px solid rgba(59, 49, 40, .2);
 }
 
-#transactions table tr {
+#transactions table tr {}
+
+#transactions table td:nth-child(1),
+#transactions table td:nth-child(2),
+#transactions th td:nth-child(2) {
+  text-align: left;
+  padding: .8rem;
 }
 
-#transactions table td:nth-child(1), #transactions table td:nth-child(2), 
-    #transactions th td:nth-child(2) {
-    text-align: left;
-    padding: .8rem;
-}
-
-#transactions table td:nth-child(3), #transactions table td:nth-child(4) {
-    text-align: right;
-    padding: .8rem;
+#transactions table td:nth-child(3),
+#transactions table td:nth-child(4) {
+  text-align: right;
+  padding: .8rem;
 }
 
 #login-page {
@@ -211,6 +224,7 @@ label {
   width: 100%;
   display: block;
 }
+
 #login {
   background-color: white;
   max-width: 500px;
@@ -226,14 +240,18 @@ label {
   text-align: center;
 }
 
-#login label, label {
+#login label,
+label {
   text-transform: uppercase;
   margin-bottom: .3rem;
   margin-top: .6rem;
   color: rgba(59, 49, 40, .6);
 }
 
-#login input, input, select, textarea {
+#login input,
+input,
+select,
+textarea {
   font-family: var(--font-family);
   outline: none;
   width: 100%;
@@ -243,7 +261,8 @@ label {
   border: 1px solid var(--text-color);
 }
 
-.btn, .btn2 {
+.btn,
+.btn2 {
   background-color: var(--secondary-text-color);
   color: white;
   padding: .7rem;
@@ -264,7 +283,8 @@ label {
   width: auto;
 }
 
-.btn:hover, .btn2:hover {
+.btn:hover,
+.btn2:hover {
   background-color: var(--text-color);
   color: white;
 }
@@ -327,14 +347,16 @@ input:disabled {
   align-items: center;
   text-align: center;
 }
+
 .overlay {
   width: 100%;
   height: 100vh;
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   background-color: rgba(126, 126, 126, 0.5);
 }
+
 .modal {
   animation: fadein .3s;
   background-color: white;
@@ -381,8 +403,7 @@ input:disabled {
   align-items: center;
 }
 
-.odd {
-}
+.odd {}
 
 .even {
   background-color: rgba(238, 238, 238, .5);
@@ -417,4 +438,65 @@ input:disabled {
 
 .title {
   text-transform: capitalize;
+}
+
+#otp-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--first-color);
+  color: var(--text-color);
+}
+
+#otp-page form {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  color: var(--text-color);
+}
+
+#otp-page label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+#otp-page input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: border-color 0.3s;
+  color: var(--text-color);
+  background-color: var(--first-color);
+}
+
+#otp-page input[type="text"]:focus {
+  border-color: var(--secondary-color);
+}
+
+#otp-page .btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#otp-page .btn:hover {
+  background-color: rgba(219, 204, 163, 0.9);
+  /* Slightly lighter shade */
 }

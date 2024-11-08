@@ -1,5 +1,4 @@
-// import React, { useState } from 'react';
-// import DATA from '../data';
+// import React, { useState, useEffect } from 'react';
 // import { Dashboard } from './Dashboard';
 // import { LoginPage } from './LoginPage';
 // import { ClientDashboard } from './ClientDashboard';
@@ -9,66 +8,83 @@
 //   const [notif, setNotif] = useState({ message: '', style: '' });
 //   const [isAdmin, setIsAdmin] = useState(false);
 //   const [client, setClient] = useState(null);
-//   const localUsers = localStorage.getItem('users');
+//   const [users, setUsers] = useState([]);
 
-//   if (!localUsers) {
-//     localStorage.setItem('users', JSON.stringify(DATA));
-//   }
+//   useEffect(() => {
+//     const fetchUsers = async () => {
+//       try {
+//         const response = await fetch('http://localhost:5000/all', {
+//           method: 'GET',
+//           headers: { 'Content-Type': 'application/json' },
+//         });
 
-//   const clients = JSON.parse(localStorage.getItem('users'));
+//         if (response.status === 200) {
+//           const data = await response.json();
+//           localStorage.setItem('users', JSON.stringify(data.users));
 
-//   const isLoginSuccess = (number, pin) => {
-//     let isFound = false;
-//     clients.forEach(user => {
-//       if (user.number === number && user.pin === pin) {
-//         if (user.isAdmin) {
-//           setIsAdmin(true);
-//           setClient(user);
-//           isFound = true;
+//           await setUsers(data.users); // Set users state with fetched data
+//         } else {
+//           setNotif({ message: 'Error fetching users data', style: 'danger' });
 //         }
-//         else {
-//           setIsAdmin(false);
-//           setClient(user)
-//           isFound = true;
-//         }
-//         setNotif('');
+//       } catch (error) {
+//         setNotif({ message: 'Server error. Please try again later.', style: 'danger' });
 //       }
-//     });
+//     };
 
-//     if (!isFound) setNotif({ message: 'Wrong account number and pin.', style: 'danger' });
-//     return isFound;
-//   }
-
-//   const login = (number, pin) => {
-//     if (isLoginSuccess(number, pin)) {
-//       setIsLoggedIn(true);
+//     if (isLoggedIn) {
+//       fetchUsers(); // Only fetch if logged in
 //     }
-//   }
+//   }, [isLoggedIn]);
+
+//   const login = async (number, pin) => {
+//     try {
+//       const response = await fetch('http://localhost:5000/login', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({ number, pin })
+//       });
+
+//       if (response.status === 200) {
+//         const data = await response.json();
+//         setIsAdmin(data.isAdmin);
+//         setClient(data.user);
+//         setIsLoggedIn(true);
+//         setNotif({ message: data.message, style: 'success' });
+//         console.log('setting current user:', data.user)
+//         localStorage.setItem('currentUser', JSON.stringify(data.user));
+//       } else {
+//         const errorData = await response.json();
+//         setNotif({ message: errorData.message || 'Login failed. Please try again.', style: 'danger' });
+//       }
+//     } catch (error) {
+//       setNotif({ message: 'Server error. Please try again later.', style: 'danger' });
+//     }
+//   };
 
 //   const logout = () => {
 //     setIsLoggedIn(false);
 //     setIsAdmin(false);
-//     localStorage.removeItem('client')
+//     setClient(null);
+//     localStorage.removeItem('currentUser');
 //     setNotif({ message: 'You have logged out.', style: 'success' });
-//   }
+//   };
 
 //   if (isLoggedIn) {
-//     localStorage.setItem('currentUser', JSON.stringify(client));
-//     if (isAdmin) {
-//       return <Dashboard users={clients} logoutHandler={logout} />
-//     } else {
-
-//       return <ClientDashboard client={client} users={clients} setClient={setClient} logout={logout} />
-//     }
+//     return isAdmin ? (
+//       <Dashboard users={users} logoutHandler={logout} />
+//     ) : (
+//       <ClientDashboard client={client} setClient={setClient} logout={logout} />
+//     );
 //   } else {
-//     return <LoginPage loginHandler={login} notif={notif} isLoggedIn={isLoggedIn} />
+//     return <LoginPage loginHandler={login} notif={notif} />;
 //   }
-// }
+// };
 
 import React, { useState, useEffect } from 'react';
 import { Dashboard } from './Dashboard';
 import { LoginPage } from './LoginPage';
 import { ClientDashboard } from './ClientDashboard';
+import { OtpPage } from './OtpPage'; // Create this new component for OTP input
 
 export const Authenticate = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -76,6 +92,8 @@ export const Authenticate = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [client, setClient] = useState(null);
   const [users, setUsers] = useState([]);
+  const [isOtpSent, setIsOtpSent] = useState(false); // Track OTP request
+  const [accountNumber, setAccountNumber] = useState(null); // Track user for OTP
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -88,8 +106,7 @@ export const Authenticate = () => {
         if (response.status === 200) {
           const data = await response.json();
           localStorage.setItem('users', JSON.stringify(data.users));
-
-          await setUsers(data.users); // Set users state with fetched data
+          setUsers(data.users); // Set users state with fetched data
         } else {
           setNotif({ message: 'Error fetching users data', style: 'danger' });
         }
@@ -113,15 +130,47 @@ export const Authenticate = () => {
 
       if (response.status === 200) {
         const data = await response.json();
-        setIsAdmin(data.isAdmin);
-        setClient(data.user);
-        setIsLoggedIn(true);
-        setNotif({ message: data.message, style: 'success' });
-        console.log('setting current user:', data.user)
-        localStorage.setItem('currentUser', JSON.stringify(data.user));
+        console.log('data', data)
+
+        if (data.user && data.user.isAdmin) {
+          setIsAdmin(data.isAdmin);
+          setClient(data.user);
+          setIsLoggedIn(true);
+          setNotif({ message: 'OTP verified successfully!', style: 'success' });
+          localStorage.setItem('currentUser', JSON.stringify(data.user));
+          return;
+        }
+
+        setIsOtpSent(true); // OTP step triggered
+        setAccountNumber(number); // Store account number for OTP verification
+        setNotif({ message: data.message, style: 'info' });
       } else {
         const errorData = await response.json();
         setNotif({ message: errorData.message || 'Login failed. Please try again.', style: 'danger' });
+      }
+    } catch (error) {
+      setNotif({ message: 'Server error. Please try again later.', style: 'danger' });
+    }
+  };
+
+  const verifyOtp = async (otp) => {
+    try {
+      const response = await fetch('http://localhost:5000/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ number: accountNumber, otp })
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setIsAdmin(data.isAdmin);
+        setClient(data.user);
+        setIsLoggedIn(true);
+        setNotif({ message: 'OTP verified successfully!', style: 'success' });
+        localStorage.setItem('currentUser', JSON.stringify(data.user));
+      } else {
+        const errorData = await response.json();
+        setNotif({ message: errorData.message || 'Invalid OTP. Please try again.', style: 'danger' });
       }
     } catch (error) {
       setNotif({ message: 'Server error. Please try again later.', style: 'danger' });
@@ -140,8 +189,11 @@ export const Authenticate = () => {
     return isAdmin ? (
       <Dashboard users={users} logoutHandler={logout} />
     ) : (
-      <ClientDashboard client={client} setClient={setClient} logout={logout} />
+      <ClientDashboard client={client} users={users} setClient={setClient} logout={logout} />
     );
+  } else if (isOtpSent) {
+    // Render OTP input page if OTP has been sent
+    return <OtpPage verifyOtpHandler={verifyOtp} notif={notif} />;
   } else {
     return <LoginPage loginHandler={login} notif={notif} />;
   }

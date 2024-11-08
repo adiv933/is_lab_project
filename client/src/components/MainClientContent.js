@@ -1,18 +1,7 @@
 import { Account } from './Account';
-import { formatNumber } from './Utils';
 
 export const MainClientContent = props => {
   const { user } = props;
-
-  const transactions = user.transactions.map((transaction, index) => {
-    const className = index % 2 === 0 ? 'even' : 'odd'
-    return transactions.length ? "No transactions yet" : (<div className={`transaction-item ${className}`}>
-      <div>{transaction.date}</div>
-      <div>{transaction.title}</div>
-      <div>{transaction.type === 'debit' ? formatNumber(transaction.amount * -1) : formatNumber(transaction.amount)}</div>
-    </div>)
-  });
-
 
   return (
     <section id="main-content">
@@ -21,7 +10,15 @@ export const MainClientContent = props => {
       <div id="transactions">
         <h2>Transactions</h2>
         <div id="transaction-div">
-          {transactions}
+
+          {user.transactions.map((transaction, index) => {
+            const className = index % 2 === 0 ? 'even' : 'odd';
+            return (
+              <div key={index} className={`transaction-item ${className}`}>
+                {transaction}
+              </div>)
+
+          })}
         </div>
       </div>
     </section>
